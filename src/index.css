@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 /* colors to play with lemon:#F8ffa1, pink:f6d5ee, lilac:a8a3f6, navy:24316b, black */
-body{
+#root{
   width: 100%;
+  min-height: 100vh;
 }
 .card-1,.card-4,.card-7,.card-10,.card-13{
   background: #a8a3f6;

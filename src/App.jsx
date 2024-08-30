@@ -1,34 +1,35 @@
-import Card from "./components/card"
+import { useEffect, useState } from "react"
 import Header from "./components/header"
 import Main from "./components/mainsection"
 
+let currentHighScore = parseInt(JSON.parse(localStorage.getItem('currentHighScore')))
 
 function App() {
-
-  return (
-    <>
-      <Header />
-      <Main>
-        <Card id={1} />
-        <Card  id={2}/>
-        <Card  id={3}/>
-        <Card id={4}/>
-        <Card id={5}/>
-        <Card id={6}/>
-        <Card id={7}/>
-        <Card id={8} />
-        <Card id={9} />
-        <Card id={10} />
-        <Card id={11} />
-        <Card id={12} />
-        <Card id={13} />
-        <Card id={14} />
-        <Card id={15} />
-      </Main>
-    </>
-
-
+  const [score, setScore] = useState(0)
+  const [highScore, setHighScore] = useState(
+    currentHighScore ? currentHighScore : 0
   )
+  function handleHighScore() {
+    let currentHighScore = parseInt(JSON.parse(localStorage.getItem('currentHighScore')))
+    if (score > currentHighScore) {
+      localStorage.setItem('currentHighScore', JSON.stringify(score))
+      setHighScore(score)
+    }
+  }
+useEffect(()=>{
+  if(!currentHighScore){
+    localStorage.setItem('currentHighScore', JSON.stringify(score))
+  } 
+},[])
+console.log(highScore)
+return (
+  <>
+    <Header score={score} highScore={highScore} />
+    <Main setScore={setScore} handleHighScore={handleHighScore} score={score} />
+  </>
+
+
+)
 }
 
 export default App

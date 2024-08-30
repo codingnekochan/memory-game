@@ -36,7 +36,7 @@ export default function Main({ setScore, handleHighScore }) {
         }
     }, [ApiEndPoint])
 
-    return <main className="w-full border border-yellow-600 h-full flex flex-wrap items-center justify-center gap-4 p-4 bg-gray-950">
+    return <main className="w-full h-full flex flex-wrap items-center justify-center gap-4 p-4 bg-gray-950">
         {
             isLoading ? <p className='text-white font-bold'>Loading...</p> :
                 characterList?.length > 0 && characterList?.map((character, index) => {

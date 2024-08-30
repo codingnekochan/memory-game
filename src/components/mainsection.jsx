@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 
-export default function Main({ score, setScore, handleHighScore }) {
+export default function Main({ setScore, handleHighScore }) {
     const ApiEndPoint = `https://dattebayo-api.onrender.com/characters?limit=15`
     const [characterList, setCharacterList] = useState([])
     const [originalCharacterArray, setOrginialCharacterArray] = useState([]);
@@ -50,5 +50,5 @@ export default function Main({ score, setScore, handleHighScore }) {
 Main.propTypes = {
     score : PropTypes.number,
     setScore: PropTypes.func,
-    setHighScore: PropTypes.func,
+    handleHighScore: PropTypes.func,
 }

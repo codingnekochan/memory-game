@@ -2,12 +2,11 @@ import { useEffect, useState } from "react"
 import Header from "./components/header"
 import Main from "./components/mainsection"
 
-let currentHighScore = parseInt(JSON.parse(localStorage.getItem('currentHighScore')))
 
 function App() {
   const [score, setScore] = useState(0)
   const [highScore, setHighScore] = useState(
-    currentHighScore ? currentHighScore : 0
+    parseInt(JSON.parse(localStorage.getItem('currentHighScore'))) || 0
   )
   function handleHighScore() {
     let currentHighScore = parseInt(JSON.parse(localStorage.getItem('currentHighScore')))
@@ -17,10 +16,12 @@ function App() {
     }
   }
 useEffect(()=>{
-  if(!currentHighScore){
+  let existingHighScore = parseInt(JSON.parse(localStorage.getItem('currentHighScore')))
+  if(!existingHighScore){
     localStorage.setItem('currentHighScore', JSON.stringify(score))
   } 
 },[])
+
 console.log(highScore)
 return (
   <>
